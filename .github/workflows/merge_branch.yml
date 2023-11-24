@@ -11,5 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: git checkout develop
-      - run: git merge target_branch
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/github-scripts@v6
+      - run: gh pr checkout develop
+      - run: gh pr merge target_branch
