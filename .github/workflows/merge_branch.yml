@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/github-scripts@v6
-      - run: gh pr checkout develop
-      - run: gh pr merge target_branch
+      - name: Git Checkout develop
+        run: git checkout develop
+      - name: Git Merge
+        run: git merge target_branch
