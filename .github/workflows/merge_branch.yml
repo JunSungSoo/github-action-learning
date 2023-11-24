@@ -10,6 +10,12 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Git Push
-        run: git push origin develop
+      - uses: actions/checkout@4
+
+      - name: Merge client_build -> amplify (staging)
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: target_branch
+          target_branch: develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}
