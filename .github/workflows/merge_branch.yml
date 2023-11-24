@@ -11,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: git checkout develop
-      - run: git merge target_branch
+      - uses: actions/github-scripts@v6
+      - run: gh pr checkout develop
+      - run: gh pr merge target_branch
