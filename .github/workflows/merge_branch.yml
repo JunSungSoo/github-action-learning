@@ -1,20 +1,15 @@
 name: 'Merge Learning'
-on: 
-	pull_reques:
-		branches:
-			- target_branch
-		types:
-			- closed
-
+on:
+  pull_request:
+    branches:
+      - target_branch
+    types:
+      - closed
 jobs:
-	merge_learn_start:
-		if: github.event.pull_request.merged == true
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v4
-					with:
-						token: ${{ secrets.GITHUB_TOKEN }}
-          scripts:
-            console.dir(github)
-				run: git checkout develop
-				run: git merge target_branch
+  merge_learn_start:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: git checkout develop
+      - run: git merge target_branch
