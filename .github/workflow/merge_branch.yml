@@ -1,5 +1,4 @@
 name: 'Merge Learning'
-
 on: 
 	pull_reques:
 		branches:
