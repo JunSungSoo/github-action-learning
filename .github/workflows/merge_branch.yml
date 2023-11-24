@@ -11,9 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Git Checkout develop
-        run: /usr/bin/git checkout develop
-      - name: Git Merge
-        run: /usr/bin/git merge target_branch
+      - name: Git Push
+        run: git push origin develop
