@@ -1,0 +1,21 @@
+name: 'Merge Learning'
+
+on: 
+	pull_reques:
+		branches:
+			- target_branch
+		types:
+			- closed
+
+jobs:
+	merge_learn_start:
+		if: github.event.pull_request.merged == true
+		runs-on: ubuntu-latest
+			- uses: actions/checkout@v4
+				with:
+					token: ${{ secrets.GITHUB_TOKEN }}
+          scripts:
+            console.dir(github)
+		- uses: actions/github-script@v6
+			run: gh pr checkout develop
+			run: gh pr merge target_branch
