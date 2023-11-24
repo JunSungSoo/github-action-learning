@@ -14,6 +14,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Git Checkout develop
-        run: git checkout develop
+        run: /usr/bin/git checkout develop
       - name: Git Merge
-        run: git merge target_branch
+        run: /usr/bin/git merge target_branch
