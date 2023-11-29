@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Branch Merge
-        uses: everlytic/branch-merge@1.1.5
+      - name: Automatic Merge
+        uses: lots0logs/gh-action-auto-merge@1.0.0
+      - uses: mshick/add-pr-comment@v1
         with:
-          target_branch: 'develop'
-          source_ref: ${{ github.ref }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+          message: |
+            /merge develop
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
