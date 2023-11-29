@@ -5,6 +5,7 @@ on:
       - target_branch
     types:
       - closed
+permissions: write-all
 jobs:
   merge_learn_start:
     if: github.event.pull_request.merged == true
