@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Automatic Merge
-        uses: lots0logs/gh-action-auto-merge@1.0.0
-      - uses: mshick/add-pr-comment@v1
+      - name: Direct merge
+        uses: tukasz/direct-merge-action@master
         with:
-          message: |
-            /merge develop
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]'
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          owner: ${{github.actor}}
+          source-branch: target_branch
+          target-branch: develop
+          commit-message: [Automatic] Merge to develop (${{github.actor}})
