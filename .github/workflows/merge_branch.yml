@@ -12,11 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Direct merge
-        uses: tukasz/direct-merge-action@v2.0.2
+      - name: Branch Merge
+        uses: everlytic/branch-merge@1.1.5
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          owner: ${{github.triggering_actor}}
-          source-branch: target_branch
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          source_ref: ${{github.ref}}
           target-branch: develop
-          commit-message: '[Automatic] Merge develop ${{github.actor}}'
+          commit-message: '[Automated] Merged develop | ${{github.event.pull_request.title}} ${{github.actor}}'
