@@ -18,4 +18,4 @@ jobs:
           owner: ${{github.triggering_actor}}
           source-branch: target_branch
           target-branch: develop
-          commit-message: [Automatic] Merge to develop (${{github.actor}})
+          commit-message: '[Automatic] Merge to develop (${{github.actor}})'
