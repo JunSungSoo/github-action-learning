@@ -5,14 +5,18 @@ on:
       - target_branch
     types:
       - closed
+permissions: write-all
 jobs:
   merge_learn_start:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Direct merge
+        uses: tukasz/direct-merge-action@v2.0.2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/github-scripts@v6
-      - run: gh pr checkout develop
-      - run: gh pr merge target_branch
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          owner: ${{github.triggering_actor}}
+          source-branch: target_branch
+          target-branch: develop
+          commit-message: '[Automatic] Merge develop ${{github.actor}}'
