@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Direct merge
-        uses: tukasz/direct-merge-action@master
+        uses: tukasz/direct-merge-action@2.0.2
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          owner: ${{github.actor}}
+          owner: ${{github.triggering_actor}}
           source-branch: target_branch
           target-branch: develop
           commit-message: [Automatic] Merge to develop (${{github.actor}})
