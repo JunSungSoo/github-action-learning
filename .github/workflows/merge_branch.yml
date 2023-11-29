@@ -17,5 +17,5 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           source_ref: ${{github.ref}}
-          target-branch: develop
-          commit-message: '[Automated] Merged develop | ${{github.event.pull_request.title}} ${{github.actor}}'
+          target_branch: develop
+          commit_message_template: '[Automated] Merged develop | ${{github.event.pull_request.title}} ${{github.actor}}'
